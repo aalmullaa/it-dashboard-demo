@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>لوحة الدعم الفني</title>
+<meta name="description" content="لوحة متابعة تذاكر الدعم الفني لفريق مكتب الخدمة">
+<meta name="theme-color" content="#f6f6f3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --font: "IBM Plex Sans Arabic", "Segoe UI", "Noto Sans Arabic", Tahoma, system-ui, sans-serif;
+  --page: #f6f6f3;
+  --surface: #fcfcfb;
+  --surface-2: #f0efec;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #76746e;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --accent: #2a78d6;
+  --accent-ink: #1c5cab;
+  --accent-wash: rgba(42,120,214,0.10);
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --good: #0ca30c;
+  --good-ink: #006300;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+  --critical-ink: #b42b2b;
+  --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.05);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --surface-2: #242422;
+    --ink: #ffffff; --ink-2: #c3c2b7; --muted: #9a988f;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --accent: #3987e5; --accent-ink: #86b6ef; --accent-wash: rgba(57,135,229,0.16);
+    --series-1: #3987e5; --series-2: #d95926;
+    --good-ink: #0ca30c; --critical-ink: #e66767;
+    --shadow: 0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --surface-2: #242422;
+  --ink: #ffffff; --ink-2: #c3c2b7; --muted: #9a988f;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --accent: #3987e5; --accent-ink: #86b6ef; --accent-wash: rgba(57,135,229,0.16);
+  --series-1: #3987e5; --series-2: #d95926;
+  --good-ink: #0ca30c; --critical-ink: #e66767;
+  --shadow: 0 1px 2px rgba(0,0,0,.4);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: var(--font); font-size: 15px; line-height: 1.6;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+.ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+.num { font-variant-numeric: tabular-nums; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 16px 48px; }
+
+/* Header */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar .wrap { display: flex; align-items: center; gap: 12px; padding-top: 10px; padding-bottom: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
+.brand-mark {
+  width: 36px; height: 36px; border-radius: 10px; flex: none;
+  display: grid; place-items: center; background: var(--accent); color: #fff;
+}
+.brand h1 { font-size: 17px; margin: 0; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand p { margin: 0; font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.actions { display: flex; gap: 8px; align-items: center; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 40px; padding: 0 14px; border-radius: 10px; cursor: pointer;
+  border: 1px solid var(--border); background: var(--surface); font-weight: 500; font-size: 14px;
+  transition: background .15s, border-color .15s;
+}
+.btn:hover { background: var(--surface-2); }
+.btn:focus-visible, .field:focus-visible, .icon-btn:focus-visible, tr:focus-visible, .chip-btn:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+.btn-danger { color: var(--critical-ink); }
+.icon-btn {
+  width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--surface); display: inline-grid; place-items: center; cursor: pointer;
+}
+.icon-btn:hover { background: var(--surface-2); }
+svg.i { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+@media (max-width: 640px) {
+  .btn .lbl-wide { display: none; }
+  .btn { padding: 0 11px; }
+  .brand p { display: none; }
+}
+@media (max-width: 440px) {
+  #addBtn .lbl-add { display: none; }
+  #addBtn { width: 40px; padding: 0; }
+  .filters #fPriority { grid-column: 1 / -1; }
+}
+
+/* Sections */
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 24px 0 10px; }
+.section-head h2 { font-size: 16px; margin: 0; font-weight: 600; }
+.section-head .meta { font-size: 13px; color: var(--muted); }
+
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+
+/* KPIs */
+.kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+@media (min-width: 900px) { .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.kpi { padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.kpi .k-label { font-size: 13px; color: var(--ink-2); display: flex; align-items: center; gap: 6px; }
+.kpi .k-label svg { color: var(--muted); }
+.kpi .k-value { font-size: 30px; font-weight: 700; line-height: 1.25; letter-spacing: -.01em; }
+.kpi .k-value small { font-size: 15px; font-weight: 500; color: var(--ink-2); margin-inline-start: 2px; }
+.kpi .k-sub { font-size: 12px; color: var(--muted); }
+.kpi .k-sub.bad { color: var(--critical-ink); }
+@media (max-width: 380px) { .kpi .k-value { font-size: 25px; } }
+
+/* Charts */
+.charts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+@media (min-width: 900px) { .charts { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); } }
+.chart-card { padding: 14px 16px 10px; min-width: 0; }
+.chart-card h3 { margin: 0; font-size: 15px; font-weight: 600; }
+.chart-card .sub { margin: 0 0 6px; font-size: 12px; color: var(--muted); }
+.chart-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+.legend { display: flex; gap: 14px; font-size: 12px; color: var(--ink-2); list-style: none; margin: 2px 0 0; padding: 0; }
+.legend li { display: flex; align-items: center; gap: 6px; }
+.legend .sw { width: 14px; height: 3px; border-radius: 2px; }
+.chart { width: 100%; position: relative; }
+.chart svg { display: block; direction: ltr; overflow: visible; }
+.chart text { font-family: var(--font); }
+.bar-row { cursor: pointer; }
+.bar-row .hit { fill: transparent; }
+.bar-row:hover .hit, .bar-row:focus .hit { fill: var(--accent-wash); }
+.bar-row:focus { outline: none; }
+.bar-row.active .hit { fill: var(--accent-wash); }
+.tooltip {
+  position: fixed; z-index: 60; pointer-events: none; opacity: 0; transition: opacity .12s;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--border);
+  border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,.14); padding: 8px 10px; font-size: 12px; min-width: 130px;
+}
+.tooltip.show { opacity: 1; }
+.tooltip .t-title { font-weight: 600; margin-bottom: 4px; }
+.tooltip .t-row { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+.tooltip .t-row span:first-child { display: flex; align-items: center; gap: 6px; color: var(--ink-2); }
+.tooltip .t-row b { font-variant-numeric: tabular-nums; }
+.tooltip .sw { width: 10px; height: 3px; border-radius: 2px; display: inline-block; }
+
+/* Filters */
+.filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; }
+.filters .search { grid-column: 1 / -1; position: relative; }
+.filters .search svg { position: absolute; inset-inline-start: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.filters .search .field { padding-inline-start: 38px; }
+.filters .tail { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+@media (min-width: 900px) {
+  .filters { grid-template-columns: minmax(0, 2.2fr) repeat(3, minmax(0, 1fr)) auto; }
+  .filters .search, .filters .tail { grid-column: auto; }
+}
+.field {
+  width: 100%; min-height: 42px; padding: 8px 12px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--page);
+}
+select.field {
+  appearance: none; -webkit-appearance: none; padding-inline-end: 34px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23898781' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: left 12px center;
+}
+textarea.field { min-height: 92px; resize: vertical; }
+.result-count { font-size: 13px; color: var(--muted); white-space: nowrap; }
+
+/* Table */
+.table-card { overflow: hidden; margin-top: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead th {
+  text-align: start; font-weight: 500; font-size: 12px; color: var(--muted);
+  padding: 10px 12px; border-bottom: 1px solid var(--border); background: var(--surface-2); white-space: nowrap;
+}
+tbody tr { cursor: pointer; transition: background .12s; }
+tbody tr:hover { background: var(--surface-2); }
+tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+tbody tr:last-child td { border-bottom: 0; }
+td.t-id { font-weight: 600; color: var(--accent-ink); white-space: nowrap; }
+td.t-title { max-width: 340px; }
+td.t-title .ttl { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
+td.t-title .req { display: block; font-size: 12px; color: var(--muted); }
+td.t-date { white-space: nowrap; color: var(--ink-2); font-size: 13px; }
+.empty { padding: 40px 16px; text-align: center; color: var(--muted); }
+.more { display: flex; justify-content: center; padding: 12px; border-top: 1px solid var(--border); }
+
+/* Chips */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 500;
+  background: var(--surface-2); color: var(--ink); border: 1px solid var(--border);
+}
+.chip .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.chip svg.i { width: 13px; height: 13px; stroke-width: 2.2; }
+.pr-critical .dot { background: var(--critical); }
+.pr-high .dot { background: var(--serious); }
+.pr-medium .dot { background: var(--warning); }
+.pr-low .dot { background: var(--axis); border: 1px solid var(--muted); }
+.st-new svg { color: var(--accent); }
+.st-progress svg { color: var(--accent); }
+.st-pending svg { color: var(--muted); }
+.st-closed svg { color: var(--good); }
+.sla { font-size: 12px; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px; }
+.sla.breach { color: var(--critical-ink); font-weight: 600; }
+.sla.ok { color: var(--ink-2); }
+.sla.risk { color: #b36b00; font-weight: 500; }
+[data-theme="dark"] .sla.risk { color: #fab219; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sla.risk { color: #fab219; } }
+.sla svg.i { width: 14px; height: 14px; }
+
+/* Mobile cards */
+@media (max-width: 760px) {
+  .table-card { background: transparent; border: 0; box-shadow: none; overflow: visible; }
+  table, tbody { display: block; }
+  thead { display: none; }
+  tbody tr {
+    display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 12px 14px; margin-bottom: 10px;
+  }
+  tbody td { padding: 0; border: 0; }
+  td.t-id { grid-column: 1; grid-row: 1; font-size: 13px; }
+  td.t-status { grid-column: 2; grid-row: 1; justify-self: end; }
+  td.t-title { grid-column: 1 / -1; grid-row: 2; max-width: none; }
+  td.t-title .ttl { white-space: normal; }
+  td.t-cat { display: none; }
+  td.t-team, td.t-pri, td.t-sla, td.t-date { grid-row: auto; }
+  .card-meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }
+  td.t-date { grid-column: 1; }
+  td.t-sla { grid-column: 2; justify-self: end; }
+  .more { border: 0; }
+}
+@media (min-width: 761px) { td.card-meta-cell { display: none; } }
+@media (max-width: 760px) { td.t-team, td.t-pri { display: none; } }
+@media (min-width: 761px) and (max-width: 1060px) { .col-cat { display: none; } }
+
+/* Side panel */
+.scrim {
+  position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 40;
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.scrim.show { opacity: 1; pointer-events: auto; }
+.panel {
+  position: fixed; top: 0; bottom: 0; inset-inline-end: 0; z-index: 50;
+  width: min(440px, 100vw); background: var(--surface); border-inline-start: 1px solid var(--border);
+  box-shadow: 0 0 40px rgba(0,0,0,.18); display: flex; flex-direction: column;
+  transform: translateX(-105%); transition: transform .25s ease; visibility: hidden;
+}
+.panel.show { transform: none; visibility: visible; }
+.panel-head { display: flex; align-items: flex-start; gap: 10px; padding: 16px; border-bottom: 1px solid var(--border); }
+.panel-head .ph-main { flex: 1; min-width: 0; }
+.panel-head .ph-id { font-size: 13px; color: var(--accent-ink); font-weight: 600; }
+.panel-head h2 { margin: 2px 0 8px; font-size: 18px; line-height: 1.45; }
+.panel-head .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.panel-body { flex: 1; overflow-y: auto; padding: 16px; }
+.dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 0 0 18px; font-size: 14px; }
+.dl dt { color: var(--muted); }
+.dl dd { margin: 0; font-weight: 500; min-width: 0; }
+.panel h4 { font-size: 13px; color: var(--muted); font-weight: 500; margin: 0 0 8px; }
+.desc { background: var(--surface-2); border-radius: 10px; padding: 12px; margin: 0 0 18px; white-space: pre-wrap; font-size: 14px; }
+.timeline { list-style: none; padding: 0; margin: 0 0 18px; }
+.timeline li { position: relative; padding-inline-start: 22px; padding-bottom: 14px; font-size: 14px; }
+.timeline li::before {
+  content: ""; position: absolute; inset-inline-start: 4px; top: 7px; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--accent);
+}
+.timeline li:not(:last-child)::after {
+  content: ""; position: absolute; inset-inline-start: 9px; top: 20px; bottom: 0; width: 1px; background: var(--grid);
+}
+.timeline li.bad::before { border-color: var(--critical); }
+.timeline li.good::before { border-color: var(--good); background: var(--good); }
+.timeline .when { display: block; font-size: 12px; color: var(--muted); }
+.panel-foot { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; align-items: center; }
+.panel-foot select { flex: 1; }
+
+/* Dialog */
+dialog {
+  border: 1px solid var(--border); border-radius: 18px; padding: 0; width: min(560px, calc(100vw - 24px));
+  background: var(--surface); color: var(--ink); box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  max-height: calc(100dvh - 24px);
+}
+dialog::backdrop { background: rgba(0,0,0,.4); }
+dialog form { display: flex; flex-direction: column; max-height: calc(100dvh - 26px); }
+.dlg-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.dlg-head h2 { margin: 0; font-size: 17px; }
+.dlg-body { padding: 16px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.dlg-body .full { grid-column: 1 / -1; }
+@media (max-width: 520px) { .dlg-body { grid-template-columns: 1fr; } }
+.dlg-body label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--ink-2); }
+.dlg-body label .req-mark { color: var(--critical-ink); }
+.hint { font-size: 12px; color: var(--muted); }
+.field:invalid.touched { border-color: var(--critical); }
+.dlg-foot { display: flex; gap: 8px; justify-content: flex-start; padding: 12px 16px; border-top: 1px solid var(--border); }
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 20px; left: 50%; transform: translate(-50%, 20px); z-index: 70;
+  background: var(--ink); color: var(--page); padding: 10px 16px; border-radius: 10px; font-size: 14px;
+  opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; max-width: calc(100vw - 32px);
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+.footer-note { margin-top: 24px; text-align: center; font-size: 12px; color: var(--muted); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M3 13h5l2 3h4l2-3h5"/><path d="M5 5h14l2 8v6H3v-6z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17.5v.01"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/><path d="M19 20a3 3 0 0 1-3 2h-3"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark"><svg class="i" style="width:20px;height:20px"><use href="#i-headset"/></svg></div>
+      <div style="min-width:0">
+        <h1>لوحة تذاكر الدعم الفني</h1>
+        <p>مكتب الخدمة · <span id="todayLabel" class="ltr num"></span></p>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="تبديل الوضع الليلي">
+        <svg class="i"><use id="themeIcon" href="#i-moon"/></svg>
+      </button>
+      <button class="btn btn-danger" id="resetBtn" type="button" title="إعادة تعيين البيانات">
+        <svg class="i"><use href="#i-reset"/></svg><span class="lbl-wide">إعادة تعيين</span>
+      </button>
+      <button class="btn btn-primary" id="addBtn" type="button" aria-label="تذكرة جديدة">
+        <svg class="i"><use href="#i-plus"/></svg><span class="lbl-add">تذكرة جديدة</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="kpis" aria-label="المؤشرات الرئيسية">
+    <div class="card kpi">
+      <span class="k-label"><svg class="i"><use href="#i-inbox"/></svg>التذاكر المفتوحة</span>
+      <span class="k-value num" id="kOpen">–</span>
+      <span class="k-sub" id="kOpenSub"></span>
+    </div>
+    <div class="card kpi">
+      <span class="k-label"><svg class="i"><use href="#i-check"/></svg>المغلقة اليوم</span>
+      <span class="k-value num" id="kClosed">–</span>
+      <span class="k-sub" id="kClosedSub"></span>
+    </div>
+    <div class="card kpi">
+      <span class="k-label"><svg class="i"><use href="#i-alert"/></svg>نسبة تجاوز اتفاقية الخدمة</span>
+      <span class="k-value num" id="kSla">–</span>
+      <span class="k-sub" id="kSlaSub"></span>
+    </div>
+    <div class="card kpi">
+      <span class="k-label"><svg class="i"><use href="#i-clock"/></svg>متوسط زمن الحل</span>
+      <span class="k-value num" id="kAvg">–</span>
+      <span class="k-sub" id="kAvgSub"></span>
+    </div>
+  </section>
+
+  <div class="section-head"><h2>نظرة عامة</h2><span class="meta">اضغط على عمود الفريق لتصفية الجدول</span></div>
+  <section class="charts">
+    <div class="card chart-card">
+      <div class="chart-head">
+        <div><h3>التذاكر حسب الفريق</h3><p class="sub">إجمالي التذاكر المسندة لكل فريق</p></div>
+      </div>
+      <div class="chart" id="barChart" role="img" aria-label="مخطط أعمدة لعدد التذاكر لكل فريق"></div>
+    </div>
+    <div class="card chart-card">
+      <div class="chart-head">
+        <div><h3>آخر 14 يومًا</h3><p class="sub">التذاكر المُنشأة والمغلقة يوميًا</p></div>
+        <ul class="legend">
+          <li><span class="sw" style="background:var(--series-1)"></span>المُنشأة</li>
+          <li><span class="sw" style="background:var(--series-2)"></span>المغلقة</li>
+        </ul>
+      </div>
+      <div class="chart" id="lineChart" role="img" aria-label="مخطط خطي للتذاكر المنشأة والمغلقة خلال آخر 14 يومًا"></div>
+    </div>
+  </section>
+
+  <div class="section-head"><h2>التذاكر</h2><span class="meta" id="lastSaved"></span></div>
+  <section class="card filters" aria-label="البحث والتصفية">
+    <div class="search">
+      <svg class="i"><use href="#i-search"/></svg>
+      <input class="field" id="q" type="search" placeholder="ابحث برقم التذكرة أو العنوان أو اسم الموظف…" aria-label="بحث" autocomplete="off">
+    </div>
+    <select class="field" id="fTeam" aria-label="الفريق"></select>
+    <select class="field" id="fStatus" aria-label="الحالة"></select>
+    <select class="field" id="fPriority" aria-label="الأولوية"></select>
+    <div class="tail">
+      <span class="result-count num" id="count"></span>
+      <button class="btn" id="clearBtn" type="button">مسح التصفية</button>
+    </div>
+  </section>
+
+  <section class="card table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>رقم التذكرة</th>
+          <th>العنوان</th>
+          <th class="col-cat">الفئة</th>
+          <th>الفريق</th>
+          <th>الأولوية</th>
+          <th>الحالة</th>
+          <th>تاريخ الإنشاء</th>
+          <th>اتفاقية الخدمة</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>لا توجد تذاكر مطابقة لمعايير البحث.</div>
+    <div class="more" id="moreWrap" hidden><button class="btn" id="moreBtn" type="button">عرض المزيد</button></div>
+  </section>
+
+  <p class="footer-note">بيانات تجريبية مولّدة تلقائيًا ومحفوظة في متصفحك فقط.</p>
+</main>
+
+<div class="scrim" id="scrim"></div>
+<aside class="panel" id="panel" aria-hidden="true" aria-labelledby="pTitle" role="dialog">
+  <div class="panel-head">
+    <div class="ph-main">
+      <div class="ph-id ltr" id="pId"></div>
+      <h2 id="pTitle"></h2>
+      <div class="chips" id="pChips"></div>
+    </div>
+    <button class="icon-btn" id="pClose" type="button" aria-label="إغلاق"><svg class="i"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="panel-body" id="pBody"></div>
+  <div class="panel-foot">
+    <select class="field" id="pStatus" aria-label="تغيير الحالة"></select>
+    <button class="btn btn-primary" id="pSave" type="button">تحديث الحالة</button>
+  </div>
+</aside>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <form id="form" method="dialog" novalidate>
+    <div class="dlg-head">
+      <h2 id="dlgTitle">تذكرة جديدة</h2>
+      <button class="icon-btn" type="button" id="dlgClose" aria-label="إغلاق"><svg class="i"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="dlg-body">
+      <label class="full"><span>عنوان المشكلة <span class="req-mark">*</span></span>
+        <input class="field" name="title" required minlength="4" maxlength="120" placeholder="مثال: الطابعة لا تستجيب في الطابق الثاني">
+      </label>
+      <label>الفئة
+        <select class="field" name="category" id="nCategory"></select>
+      </label>
+      <label>الفريق المسؤول
+        <select class="field" name="team" id="nTeam"></select>
+      </label>
+      <label>الأولوية
+        <select class="field" name="priority" id="nPriority"></select>
+        <span class="hint" id="slaHint"></span>
+      </label>
+      <label><span>مقدّم الطلب <span class="req-mark">*</span></span>
+        <input class="field" name="requester" required minlength="2" maxlength="60" placeholder="الاسم الكامل">
+      </label>
+      <label class="full">الإدارة
+        <select class="field" name="dept" id="nDept"></select>
+      </label>
+      <label class="full">الوصف
+        <textarea class="field" name="description" maxlength="1000" placeholder="تفاصيل إضافية تساعد الفريق على حل المشكلة"></textarea>
+      </label>
+    </div>
+    <div class="dlg-foot">
+      <button class="btn btn-primary" type="submit" id="submitBtn">إضافة التذكرة</button>
+      <button class="btn" type="button" id="cancelBtn">إلغاء</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="tooltip" id="tip" role="tooltip"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+'use strict';
+
+/* ---------- Constants ---------- */
+const STORE_KEY = 'itdash.tickets.v1';
+const THEME_KEY = 'itdash.theme';
+const HOUR = 3600e3, DAY = 24 * HOUR;
+
+const TEAMS = [
+  { id: 'L0', name: 'L0', desc: 'الاستقبال والدعم الأولي' },
+  { id: 'L1A', name: 'L1A', desc: 'دعم التطبيقات والحسابات' },
+  { id: 'L1B', name: 'L1B', desc: 'دعم الشبكات والاتصالات' },
+  { id: 'HW', name: 'الأجهزة', desc: 'Hardware' },
+  { id: 'CO', name: 'التنسيق', desc: 'Coordination' },
+];
+const PRIORITIES = [
+  { id: 'critical', name: 'حرجة', sla: 4 },
+  { id: 'high', name: 'عالية', sla: 8 },
+  { id: 'medium', name: 'متوسطة', sla: 24 },
+  { id: 'low', name: 'منخفضة', sla: 72 },
+];
+const STATUSES = [
+  { id: 'new', name: 'جديدة', icon: 'i-spark' },
+  { id: 'progress', name: 'قيد المعالجة', icon: 'i-play' },
+  { id: 'pending', name: 'بانتظار المستخدم', icon: 'i-pause' },
+  { id: 'closed', name: 'مغلقة', icon: 'i-check' },
+];
+const DEPTS = ['الموارد البشرية', 'الشؤون المالية', 'المشتريات', 'الشؤون القانونية', 'التسويق والاتصال', 'العمليات', 'خدمة العملاء', 'تقنية المعلومات', 'المكتب التنفيذي', 'التدريب والتطوير'];
+const LOCATIONS = ['المبنى الرئيسي – الطابق الأول', 'المبنى الرئيسي – الطابق الثاني', 'المبنى الرئيسي – الطابق الثالث', 'مبنى الإدارة – الطابق الأرضي', 'فرع الشمال', 'فرع الشرق', 'مركز البيانات', 'العمل عن بُعد'];
+
+// category -> default team, weight, priority weights [critical, high, medium, low], sample titles
+const CATEGORIES = [
+  { id: 'accounts', name: 'الحسابات والصلاحيات', team: 'L0', w: 20, pw: [2, 18, 55, 25], titles: [
+    'إعادة تعيين كلمة المرور', 'قفل الحساب بعد محاولات دخول متعددة', 'طلب صلاحية على مجلد مشترك', 'تفعيل المصادقة الثنائية', 'انتهاء صلاحية كلمة مرور النظام', 'طلب إنشاء حساب لموظف جديد', 'إلغاء صلاحيات موظف منتقل'] },
+  { id: 'email', name: 'البريد الإلكتروني', team: 'L1A', w: 13, pw: [4, 20, 52, 24], titles: [
+    'عدم استلام الرسائل في Outlook', 'صندوق البريد ممتلئ', 'طلب إنشاء قائمة بريدية', 'تعذر إرسال المرفقات الكبيرة', 'رسائل تصيّد مشبوهة في البريد', 'مزامنة البريد على الجوال لا تعمل'] },
+  { id: 'software', name: 'البرمجيات والتطبيقات', team: 'L1A', w: 18, pw: [6, 22, 50, 22], titles: [
+    'تعطل نظام ERP عند حفظ أمر الشراء', 'رسالة خطأ عند فتح ملفات Excel', 'طلب تثبيت برنامج Microsoft Teams', 'بطء في نظام الموارد البشرية', 'تحديث نظام التشغيل متوقف', 'انتهاء ترخيص برنامج Adobe Acrobat', 'تعذر الدخول إلى بوابة الخدمات الذاتية'] },
+  { id: 'network', name: 'الشبكة والاتصال', team: 'L1B', w: 14, pw: [12, 30, 43, 15], titles: [
+    'انقطاع الشبكة اللاسلكية في الطابق الثالث', 'بطء شديد في الاتصال بالإنترنت', 'تعذر الاتصال بالشبكة الافتراضية الخاصة VPN', 'منفذ الشبكة في المكتب لا يعمل', 'انقطاع الاتصال بفرع الشمال', 'طلب فتح منفذ على جدار الحماية'] },
+  { id: 'phones', name: 'الهاتف والاتصالات', team: 'L1B', w: 6, pw: [3, 20, 52, 25], titles: [
+    'هاتف المكتب بلا حرارة', 'إعداد تحويل المكالمات', 'البريد الصوتي لا يعمل', 'ضعف جودة الصوت في الاجتماعات المرئية'] },
+  { id: 'hardware', name: 'الأجهزة', team: 'HW', w: 15, pw: [4, 22, 50, 24], titles: [
+    'الحاسوب المحمول لا يعمل بعد التحديث', 'الشاشة الخارجية لا تعرض الصورة', 'بطارية الحاسوب المحمول لا تشحن', 'تعطل لوحة المفاتيح', 'صوت مرتفع من مروحة الجهاز', 'طلب ذاكرة إضافية للجهاز', 'كسر في شاشة الحاسوب المحمول'] },
+  { id: 'printers', name: 'الطابعات', team: 'HW', w: 8, pw: [1, 14, 55, 30], titles: [
+    'الطابعة لا تستجيب', 'انحشار الورق في الطابعة المركزية', 'تثبيت طابعة شبكية جديدة', 'الماسح الضوئي لا يرسل إلى البريد', 'نفاد الحبر في طابعة الاستقبال'] },
+  { id: 'requests', name: 'طلبات الخدمة', team: 'CO', w: 12, pw: [1, 16, 48, 35], titles: [
+    'تجهيز مكتب وأجهزة لموظف جديد', 'طلب شراء أجهزة للقسم', 'تنسيق زيارة فني المورد', 'نقل أجهزة موظف إلى مكتب جديد', 'تجهيز قاعة اجتماعات لفعالية', 'استلام أجهزة موظف مغادر', 'متابعة تصعيد لدى مزود الخدمة'] },
+];
+
+const FIRST = ['أحمد', 'محمد', 'عبدالله', 'خالد', 'فهد', 'سعود', 'ريم', 'نورة', 'سارة', 'هند', 'فيصل', 'عمر', 'يوسف', 'مها', 'لطيفة', 'ناصر', 'تركي', 'دانة', 'جود', 'بندر', 'ليان', 'منيرة', 'سلطان', 'علي', 'هيفاء', 'راكان', 'عبدالرحمن', 'أمل', 'وليد', 'غادة'];
+const LAST = ['العتيبي', 'القحطاني', 'الشمري', 'الدوسري', 'الغامدي', 'الزهراني', 'الحربي', 'المطيري', 'السبيعي', 'العنزي', 'الشهري', 'الأحمدي', 'البلوي', 'الرشيدي', 'السهلي', 'الخالدي', 'الجهني', 'العمري', 'المالكي', 'الفيفي'];
+
+const byId = (list) => Object.fromEntries(list.map(x => [x.id, x]));
+const TEAM = byId(TEAMS), PRI = byId(PRIORITIES), STAT = byId(STATUSES), CAT = byId(CATEGORIES);
+
+/* ---------- Utilities ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const pad = (n) => String(n).padStart(2, '0');
+const fmtDate = (t) => { const d = new Date(t); return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`; };
+const fmtTime = (t) => { const d = new Date(t); return `${pad(d.getHours())}:${pad(d.getMinutes())}`; };
+const fmtDateTime = (t) => `${fmtDate(t)} ${fmtTime(t)}`;
+const startOfDay = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
+const fmtDuration = (ms) => {
+  const mins = Math.max(0, Math.round(ms / 60000));
+  if (mins < 60) return `${mins} دقيقة`;
+  const h = Math.floor(mins / 60), m = mins % 60;
+  if (h < 48) return m ? `${h} س ${m} د` : `${h} س`;
+  const d = Math.floor(h / 24), rh = h % 24;
+  return rh ? `${d} يوم ${rh} س` : `${d} يوم`;
+};
+const ltr = (s) => `<span class="ltr num">${esc(s)}</span>`;
+const icon = (id, cls = 'i') => `<svg class="${cls}"><use href="#${id}"/></svg>`;
+
+const storage = {
+  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); return true; } catch { return false; } },
+  del(k) { try { localStorage.removeItem(k); } catch { /* ignore */ } },
+};
+
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+/* ---------- Sample data ---------- */
+function generateTickets(count = 200, seed = Date.now()) {
+  const rnd = mulberry32(seed);
+  const pick = (arr) => arr[Math.floor(rnd() * arr.length)];
+  const weighted = (items, weights) => {
+    const total = weights.reduce((a, b) => a + b, 0);
+    let r = rnd() * total;
+    for (let i = 0; i < items.length; i++) { r -= weights[i]; if (r <= 0) return items[i]; }
+    return items[items.length - 1];
+  };
+  const gauss = () => { let u = 0, v = 0; while (!u) u = rnd(); while (!v) v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+  const person = () => `${pick(FIRST)} ${pick(LAST)}`;
+
+  // ~50-person helpdesk, 10 agents per team
+  const agents = {};
+  TEAMS.forEach(t => { agents[t.id] = Array.from({ length: 10 }, person); });
+
+  const now = Date.now();
+  const today0 = startOfDay(now);
+  const SPAN_DAYS = 21;
+  // Day weights: Friday/Saturday are the weekend
+  const days = [];
+  for (let i = SPAN_DAYS - 1; i >= 0; i--) {
+    const d0 = today0 - i * DAY;
+    const dow = new Date(d0).getDay();
+    days.push({ d0, w: (dow === 5 || dow === 6) ? 0.25 : (i === 0 ? 0.8 : 1) });
+  }
+
+  const tickets = [];
+  let guard = 0;
+  while (tickets.length < count && guard++ < count * 10) {
+    const day = weighted(days, days.map(d => d.w));
+    // Working hours bias: 7:30–16:30 mostly
+    const hour = rnd() < 0.88 ? 7.5 + rnd() * 9 : rnd() * 24;
+    const created = Math.round(day.d0 + hour * HOUR);
+    if (created > now - 5 * 60e3) continue;
+
+    const cat = weighted(CATEGORIES, CATEGORIES.map(c => c.w));
+    const team = rnd() < 0.88 ? cat.team : (rnd() < 0.5 ? 'CO' : 'L0');
+    const pri = weighted(PRIORITIES, cat.pw);
+    const slaDue = created + pri.sla * HOUR;
+    // Resolution time: lognormal around ~55% of the SLA window (≈15% breach)
+    const ratio = Math.exp(-0.6 + 0.62 * gauss());
+    const resolveMs = Math.max(10 * 60e3, ratio * pri.sla * HOUR);
+    let closed = created + resolveMs;
+    let status;
+    if (closed <= now && rnd() > 0.03) {
+      status = 'closed';
+    } else {
+      closed = null;
+      const age = now - created;
+      status = age < HOUR ? 'new' : weighted(['new', 'progress', 'pending'], [12, 62, 26]);
+    }
+    const title = pick(cat.titles);
+    tickets.push({
+      id: '', title, category: cat.id, team, priority: pri.id, status,
+      requester: person(), dept: pick(DEPTS), assignee: status === 'new' && rnd() < 0.6 ? '' : pick(agents[team]),
+      location: pick(LOCATIONS),
+      created, closed: closed ? Math.round(closed) : null, slaDue,
+      description: `أفاد المستخدم بالمشكلة التالية: ${title}.\nالموقع: ${pick(LOCATIONS)}.\nرقم التحويلة: ${2000 + Math.floor(rnd() * 7999)}.`,
+      history: [],
+    });
+  }
+  tickets.sort((a, b) => a.created - b.created);
+  tickets.forEach((t, i) => { t.id = `INC-${10480 + i}`; });
+  return tickets;
+}
+
+/* ---------- State ---------- */
+let tickets = [];
+const filters = { q: '', team: '', status: '', priority: '' };
+let pageSize = 40;
+let openTicketId = null;
+
+function load() {
+  const raw = storage.get(STORE_KEY);
+  if (raw) {
+    try {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed.tickets) && parsed.tickets.length) { tickets = parsed.tickets; return; }
+    } catch { /* fall through to regenerate */ }
+  }
+  tickets = generateTickets();
+  save();
+}
+function save() {
+  const ok = storage.set(STORE_KEY, JSON.stringify({ v: 1, savedAt: Date.now(), tickets }));
+  $('#lastSaved').textContent = ok ? `محفوظة محليًا · ${tickets.length} تذكرة` : 'تعذر الحفظ محليًا';
+}
+const nextId = () => {
+  const max = tickets.reduce((m, t) => Math.max(m, parseInt(t.id.split('-')[1], 10) || 0), 10479);
+  return `INC-${max + 1}`;
+};
+const isOpen = (t) => t.status !== 'closed';
+const isBreached = (t, now = Date.now()) => (t.closed ? t.closed > t.slaDue : now > t.slaDue);
+
+/* ---------- Filters ---------- */
+function fillSelect(el, items, allLabel) {
+  el.innerHTML = (allLabel ? `<option value="">${esc(allLabel)}</option>` : '') +
+    items.map(x => `<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('');
+}
+function applyFilters() {
+  const q = filters.q.trim().toLowerCase();
+  return tickets.filter(t => {
+    if (filters.team && t.team !== filters.team) return false;
+    if (filters.priority && t.priority !== filters.priority) return false;
+    if (filters.status === 'open') { if (!isOpen(t)) return false; }
+    else if (filters.status === 'breached') { if (!isBreached(t)) return false; }
+    else if (filters.status && t.status !== filters.status) return false;
+    if (q) {
+      const hay = `${t.id} ${t.title} ${t.requester} ${t.assignee} ${CAT[t.category]?.name || ''} ${t.dept}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  }).sort((a, b) => b.created - a.created);
+}
+
+/* ---------- Render: KPIs ---------- */
+function renderKpis() {
+  const now = Date.now(), today0 = startOfDay(now);
+  const open = tickets.filter(isOpen);
+  const openBreached = open.filter(t => isBreached(t, now)).length;
+  const closedToday = tickets.filter(t => t.closed && t.closed >= today0).length;
+  const createdToday = tickets.filter(t => t.created >= today0).length;
+  const breached = tickets.filter(t => isBreached(t, now)).length;
+  const closed = tickets.filter(t => t.closed);
+  const avg = closed.length ? closed.reduce((s, t) => s + (t.closed - t.created), 0) / closed.length : 0;
+  const pct = tickets.length ? (breached / tickets.length) * 100 : 0;
+
+  $('#kOpen').textContent = open.length.toLocaleString('en-US');
+  $('#kOpenSub').textContent = openBreached ? `${openBreached} منها تجاوزت موعد الاستحقاق` : 'لا توجد تذاكر متأخرة';
+  $('#kOpenSub').classList.toggle('bad', openBreached > 0);
+  $('#kClosed').textContent = closedToday.toLocaleString('en-US');
+  $('#kClosedSub').textContent = `مقابل ${createdToday} تذكرة جديدة اليوم`;
+  $('#kSla').innerHTML = `${pct.toFixed(1)}<small>%</small>`;
+  $('#kSlaSub').textContent = `${breached} من أصل ${tickets.length} تذكرة`;
+  const hrs = avg / HOUR;
+  $('#kAvg').innerHTML = hrs >= 1 ? `${hrs.toFixed(1)}<small>ساعة</small>` : `${Math.round(avg / 60000)}<small>دقيقة</small>`;
+  $('#kAvgSub').textContent = `على ${closed.length} تذكرة مغلقة`;
+}
+
+/* ---------- Render: Charts ---------- */
+const tip = $('#tip');
+function showTip(html, x, y) {
+  tip.innerHTML = html;
+  tip.classList.add('show');
+  const r = tip.getBoundingClientRect();
+  let left = x + 14, top = y - r.height - 12;
+  if (left + r.width > innerWidth - 8) left = x - r.width - 14;
+  if (left < 8) left = 8;
+  if (top < 8) top = y + 16;
+  tip.style.left = `${left}px`; tip.style.top = `${top}px`;
+}
+const hideTip = () => tip.classList.remove('show');
+
+function niceMax(v) {
+  if (v <= 5) return 5;
+  const mag = Math.pow(10, Math.floor(Math.log10(v)));
+  for (const m of [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]) if (m * mag >= v) return m * mag;
+  return 10 * mag;
+}
+// Pick a division count that keeps every tick a whole number
+const tickDivisions = (max) => [4, 5, 3, 2].find(n => max % n === 0) || 1;
+const NS = 'http://www.w3.org/2000/svg';
+
+function renderBarChart() {
+  const el = $('#barChart');
+  const W = Math.max(260, el.clientWidth);
+  const rowH = 40, barH = 18, top = 4;
+  const data = TEAMS.map(t => {
+    const list = tickets.filter(x => x.team === t.id);
+    return { team: t, total: list.length, open: list.filter(isOpen).length };
+  });
+  const max = niceMax(Math.max(...data.map(d => d.total), 1));
+  const labelW = 70, valueW = 34;
+  const x0 = W - labelW;             // baseline (right side, RTL)
+  const plotW = x0 - valueW;
+  const H = top + data.length * rowH + 22;
+  let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="${NS}">`;
+  // Gridlines
+  const nb = tickDivisions(max);
+  for (let i = 0; i <= nb; i++) {
+    const v = (max / nb) * i, x = x0 - (v / max) * plotW;
+    s += `<line x1="${x}" x2="${x}" y1="${top}" y2="${H - 20}" stroke="var(${i === 0 ? '--axis' : '--grid'})" stroke-width="1"/>`;
+    s += `<text x="${x}" y="${H - 5}" text-anchor="middle" font-size="11" fill="var(--muted)" class="num">${Math.round(v)}</text>`;
+  }
+  data.forEach((d, i) => {
+    const y = top + i * rowH + (rowH - barH) / 2;
+    const w = Math.max(2, (d.total / max) * plotW);
+    const xl = x0 - w, r = Math.min(4, w);
+    const active = filters.team === d.team.id;
+    // Bar with rounded data end (left) and square baseline (right)
+    const path = `M${x0},${y} H${xl + r} Q${xl},${y} ${xl},${y + r} V${y + barH - r} Q${xl},${y + barH} ${xl + r},${y + barH} H${x0} Z`;
+    s += `<g class="bar-row${active ? ' active' : ''}" data-team="${d.team.id}" tabindex="0" role="button" aria-label="${esc(d.team.name)}: ${d.total} تذكرة">`;
+    s += `<rect class="hit" x="0" y="${top + i * rowH}" width="${W}" height="${rowH}" rx="6"/>`;
+    s += `<path d="${path}" fill="var(--series-1)" opacity="${filters.team && !active ? 0.35 : 1}"/>`;
+    s += `<text x="${W - 4}" y="${y + barH / 2 + 4}" text-anchor="end" font-size="13" font-weight="${active ? 700 : 500}" fill="var(--ink)">${esc(d.team.name)}</text>`;
+    s += `<text x="${xl - 6}" y="${y + barH / 2 + 4}" text-anchor="end" font-size="12" font-weight="600" fill="var(--ink-2)" class="num">${d.total}</text>`;
+    s += `</g>`;
+  });
+  s += `</svg>`;
+  el.innerHTML = s;
+  el.querySelectorAll('.bar-row').forEach(g => {
+    const d = data.find(x => x.team.id === g.dataset.team);
+    const html = `<div class="t-title">${esc(d.team.name)} <span style="color:var(--muted);font-weight:400">· ${esc(d.team.desc)}</span></div>
+      <div class="t-row"><span>الإجمالي</span><b>${d.total}</b></div>
+      <div class="t-row"><span>المفتوحة</span><b>${d.open}</b></div>
+      <div class="t-row"><span>المغلقة</span><b>${d.total - d.open}</b></div>`;
+    g.addEventListener('pointermove', e => showTip(html, e.clientX, e.clientY));
+    g.addEventListener('pointerleave', hideTip);
+    const toggle = () => {
+      filters.team = filters.team === d.team.id ? '' : d.team.id;
+      $('#fTeam').value = filters.team;
+      pageSize = 40; hideTip(); renderAll();
+    };
+    g.addEventListener('click', toggle);
+    g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
+}
+
+let lineLeave = null;
+document.addEventListener('pointerdown', e => { if (lineLeave && !e.target.closest('#lineChart')) lineLeave(); });
+window.addEventListener('scroll', () => { if (tip.classList.contains('show')) hideTip(); }, { passive: true });
+
+function renderLineChart() {
+  const el = $('#lineChart');
+  const W = Math.max(280, el.clientWidth), H = 220;
+  const padR = 34, padL = 12, padT = 12, padB = 28;
+  const today0 = startOfDay(Date.now());
+  const days = [];
+  for (let i = 13; i >= 0; i--) {
+    const d0 = today0 - i * DAY, d1 = d0 + DAY;
+    days.push({
+      d0,
+      created: tickets.filter(t => t.created >= d0 && t.created < d1).length,
+      closed: tickets.filter(t => t.closed && t.closed >= d0 && t.closed < d1).length,
+    });
+  }
+  const max = niceMax(Math.max(...days.map(d => Math.max(d.created, d.closed)), 1));
+  const plotW = W - padR - padL, plotH = H - padT - padB;
+  // RTL time axis: oldest on the right, most recent on the left
+  const xAt = (i) => W - padR - (i / (days.length - 1)) * plotW;
+  const yAt = (v) => padT + plotH - (v / max) * plotH;
+  let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="${NS}">`;
+  const nl = tickDivisions(max);
+  for (let k = 0; k <= nl; k++) {
+    const v = (max / nl) * k, y = yAt(v);
+    s += `<line x1="${padL}" x2="${W - padR}" y1="${y}" y2="${y}" stroke="var(${k === 0 ? '--axis' : '--grid'})" stroke-width="1"/>`;
+    s += `<text x="${W - padR + 6}" y="${y + 4}" text-anchor="start" font-size="11" fill="var(--muted)" class="num">${Math.round(v)}</text>`;
+  }
+  const step = W < 460 ? 3 : 2;
+  days.forEach((d, i) => {
+    if ((days.length - 1 - i) % step !== 0) return;
+    const dt = new Date(d.d0);
+    s += `<text x="${xAt(i)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="var(--muted)" class="num">${dt.getMonth() + 1}/${dt.getDate()}</text>`;
+  });
+  const series = [{ key: 'created', color: 'var(--series-1)', name: 'المُنشأة' }, { key: 'closed', color: 'var(--series-2)', name: 'المغلقة' }];
+  series.forEach(sr => {
+    const pts = days.map((d, i) => `${xAt(i).toFixed(1)},${yAt(d[sr.key]).toFixed(1)}`).join(' ');
+    s += `<polyline points="${pts}" fill="none" stroke="${sr.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  });
+  // Crosshair + hover dots
+  s += `<line id="xh" x1="0" x2="0" y1="${padT}" y2="${padT + plotH}" stroke="var(--axis)" stroke-width="1" visibility="hidden"/>`;
+  series.forEach(sr => { s += `<circle class="hd" data-k="${sr.key}" r="4.5" fill="${sr.color}" stroke="var(--surface)" stroke-width="2" visibility="hidden"/>`; });
+  s += `<rect id="hitArea" x="${padL}" y="${padT}" width="${plotW}" height="${plotH}" fill="transparent" style="cursor:crosshair"/>`;
+  s += `</svg>`;
+  el.innerHTML = s;
+
+  const svg = el.querySelector('svg'), xh = svg.querySelector('#xh'), dots = svg.querySelectorAll('.hd');
+  const hit = svg.querySelector('#hitArea');
+  const move = (e) => {
+    const rect = svg.getBoundingClientRect();
+    const px = e.clientX - rect.left;
+    let i = Math.round(((W - padR) - px) / plotW * (days.length - 1));
+    i = Math.max(0, Math.min(days.length - 1, i));
+    const d = days[i], x = xAt(i);
+    xh.setAttribute('x1', x); xh.setAttribute('x2', x); xh.setAttribute('visibility', 'visible');
+    dots.forEach(c => { c.setAttribute('cx', x); c.setAttribute('cy', yAt(d[c.dataset.k])); c.setAttribute('visibility', 'visible'); });
+    showTip(`<div class="t-title">${ltr(fmtDate(d.d0))}</div>` + series.map(sr =>
+      `<div class="t-row"><span><i class="sw" style="background:${sr.color}"></i>${sr.name}</span><b>${d[sr.key]}</b></div>`).join(''),
+      rect.left + x, rect.top + Math.min(yAt(d.created), yAt(d.closed)));
+  };
+  const leave = () => { xh.setAttribute('visibility', 'hidden'); dots.forEach(c => c.setAttribute('visibility', 'hidden')); hideTip(); };
+  hit.addEventListener('pointermove', move);
+  hit.addEventListener('pointerdown', move);
+  // On touch, pointerleave fires right after the tap; keep the readout until the next tap elsewhere.
+  hit.addEventListener('pointerleave', e => { if (e.pointerType !== 'touch') leave(); });
+  lineLeave = leave;
+}
+
+/* ---------- Render: table ---------- */
+const priChip = (id) => `<span class="chip pr-${id}"><span class="dot"></span>${esc(PRI[id].name)}</span>`;
+const statChip = (id) => `<span class="chip st-${id}">${icon(STAT[id].icon)}${esc(STAT[id].name)}</span>`;
+const teamChip = (id) => `<span class="chip">${esc(TEAM[id]?.name || id)}</span>`;
+function slaCell(t, now = Date.now()) {
+  if (isBreached(t, now)) {
+    const late = (t.closed || now) - t.slaDue;
+    return `<span class="sla breach">${icon('i-alert')}متجاوزة ${t.closed ? '' : 'بـ ' + esc(fmtDuration(late))}</span>`;
+  }
+  if (t.closed) return `<span class="sla ok">${icon('i-check')}ضمن المدة</span>`;
+  const left = t.slaDue - now;
+  const risky = left < (PRI[t.priority].sla * HOUR) * 0.25;
+  return `<span class="sla ${risky ? 'risk' : 'ok'}">${icon('i-clock')}متبقٍ ${esc(fmtDuration(left))}</span>`;
+}
+
+function renderTable() {
+  const list = applyFilters();
+  const shown = list.slice(0, pageSize);
+  const now = Date.now();
+  $('#rows').innerHTML = shown.map(t => `
+    <tr data-id="${esc(t.id)}" tabindex="0">
+      <td class="t-id">${ltr(t.id)}</td>
+      <td class="t-title"><span class="ttl">${esc(t.title)}</span><span class="req">${esc(t.requester)} · ${esc(t.dept)}</span></td>
+      <td class="t-cat col-cat">${esc(CAT[t.category]?.name || '')}</td>
+      <td class="t-team">${teamChip(t.team)}</td>
+      <td class="t-pri">${priChip(t.priority)}</td>
+      <td class="t-status">${statChip(t.status)}</td>
+      <td class="card-meta-cell card-meta">${teamChip(t.team)}${priChip(t.priority)}</td>
+      <td class="t-date">${ltr(fmtDate(t.created))} <span class="ltr num" style="color:var(--muted)">${fmtTime(t.created)}</span></td>
+      <td class="t-sla">${slaCell(t, now)}</td>
+    </tr>`).join('');
+  $('#empty').hidden = list.length > 0;
+  $('#moreWrap').hidden = list.length <= pageSize;
+  $('#moreBtn').textContent = `عرض المزيد (${list.length - shown.length} متبقية)`;
+  $('#count').textContent = `عرض ${shown.length} من ${list.length} تذكرة`;
+}
+
+function renderAll() {
+  renderKpis();
+  renderBarChart();
+  renderLineChart();
+  renderTable();
+  if (openTicketId) renderPanel();
+}
+
+/* ---------- Detail panel ---------- */
+const panel = $('#panel'), scrim = $('#scrim');
+let lastFocus = null;
+function openPanel(id) {
+  openTicketId = id;
+  lastFocus = document.activeElement;
+  renderPanel();
+  panel.classList.add('show'); scrim.classList.add('show');
+  panel.setAttribute('aria-hidden', 'false');
+  setTimeout(() => $('#pClose').focus(), 50);
+}
+function closePanel() {
+  openTicketId = null;
+  panel.classList.remove('show'); scrim.classList.remove('show');
+  panel.setAttribute('aria-hidden', 'true');
+  hideTip();
+  if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+}
+function renderPanel() {
+  const t = tickets.find(x => x.id === openTicketId);
+  if (!t) return closePanel();
+  const now = Date.now();
+  $('#pId').textContent = t.id;
+  $('#pTitle').textContent = t.title;
+  $('#pChips').innerHTML = statChip(t.status) + priChip(t.priority) + teamChip(t.team);
+  const breached = isBreached(t, now);
+  const tl = [
+    { cls: '', label: 'إنشاء التذكرة', when: t.created },
+    ...(t.history || []).map(h => ({ cls: '', label: `تغيير الحالة إلى «${STAT[h.status]?.name || h.status}»`, when: h.at })),
+    { cls: breached ? 'bad' : '', label: `موعد الاستحقاق (${PRI[t.priority].sla} ساعة)`, when: t.slaDue },
+  ];
+  if (t.closed) tl.push({ cls: 'good', label: `إغلاق التذكرة · استغرقت ${fmtDuration(t.closed - t.created)}`, when: t.closed });
+  tl.sort((a, b) => a.when - b.when);
+  $('#pBody').innerHTML = `
+    <dl class="dl">
+      <dt>الفئة</dt><dd>${esc(CAT[t.category]?.name || '')}</dd>
+      <dt>الفريق</dt><dd>${esc(TEAM[t.team]?.name)} <span style="color:var(--muted);font-weight:400">· ${esc(TEAM[t.team]?.desc)}</span></dd>
+      <dt>المسند إليه</dt><dd>${t.assignee ? esc(t.assignee) : '<span style="color:var(--muted)">لم تُسند بعد</span>'}</dd>
+      <dt>مقدّم الطلب</dt><dd>${esc(t.requester)}</dd>
+      <dt>الإدارة</dt><dd>${esc(t.dept)}</dd>
+      ${t.location ? `<dt>الموقع</dt><dd>${esc(t.location)}</dd>` : ''}
+      <dt>تاريخ الإنشاء</dt><dd>${ltr(fmtDateTime(t.created))}</dd>
+      <dt>الاستحقاق</dt><dd>${ltr(fmtDateTime(t.slaDue))}</dd>
+      <dt>تاريخ الإغلاق</dt><dd>${t.closed ? ltr(fmtDateTime(t.closed)) : '<span style="color:var(--muted)">—</span>'}</dd>
+      <dt>اتفاقية الخدمة</dt><dd>${slaCell(t, now)}</dd>
+    </dl>
+    <h4>الوصف</h4>
+    <p class="desc">${esc(t.description || 'لا يوجد وصف.')}</p>
+    <h4>السجل الزمني</h4>
+    <ul class="timeline">${tl.map(x => `<li class="${x.cls}">${esc(x.label)}<span class="when">${ltr(fmtDateTime(x.when))}${x.when > now ? ' · قادم' : ''}</span></li>`).join('')}</ul>`;
+  $('#pStatus').value = t.status;
+}
+$('#pSave').addEventListener('click', () => {
+  const t = tickets.find(x => x.id === openTicketId);
+  const st = $('#pStatus').value;
+  if (!t || t.status === st) return;
+  t.status = st;
+  t.history = t.history || [];
+  t.history.push({ status: st, at: Date.now() });
+  t.closed = st === 'closed' ? Date.now() : null;
+  save(); renderAll();
+  toast(`تم تحديث حالة ${t.id} إلى «${STAT[st].name}»`);
+});
+$('#pClose').addEventListener('click', closePanel);
+scrim.addEventListener('click', closePanel);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && openTicketId && !$('#dlg').open) closePanel(); });
+
+$('#rows').addEventListener('click', e => { const tr = e.target.closest('tr[data-id]'); if (tr) openPanel(tr.dataset.id); });
+$('#rows').addEventListener('keydown', e => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const tr = e.target.closest('tr[data-id]'); if (tr) { e.preventDefault(); openPanel(tr.dataset.id); }
+});
+
+/* ---------- New ticket dialog ---------- */
+const dlg = $('#dlg'), form = $('#form');
+function updateSlaHint() {
+  const p = PRI[$('#nPriority').value];
+  $('#slaHint').textContent = `مدة الاستجابة المستهدفة: ${p.sla} ساعة`;
+}
+$('#nCategory').addEventListener('change', () => { $('#nTeam').value = CAT[$('#nCategory').value].team; });
+$('#nPriority').addEventListener('change', updateSlaHint);
+$('#addBtn').addEventListener('click', () => {
+  form.reset();
+  form.querySelectorAll('.touched').forEach(x => x.classList.remove('touched'));
+  $('#nCategory').value = CATEGORIES[0].id;
+  $('#nTeam').value = CATEGORIES[0].team;
+  $('#nPriority').value = 'medium';
+  updateSlaHint();
+  dlg.showModal();
+  setTimeout(() => form.title.focus(), 30);
+});
+const closeDlg = () => dlg.close();
+$('#dlgClose').addEventListener('click', closeDlg);
+$('#cancelBtn').addEventListener('click', closeDlg);
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  form.querySelectorAll('[required]').forEach(x => x.classList.add('touched'));
+  if (!form.checkValidity()) {
+    const bad = form.querySelector(':invalid');
+    if (bad) bad.focus();
+    toast('يرجى تعبئة الحقول المطلوبة');
+    return;
+  }
+  const fd = new FormData(form);
+  const now = Date.now();
+  const pri = PRI[fd.get('priority')];
+  const t = {
+    id: nextId(),
+    title: String(fd.get('title')).trim(),
+    category: fd.get('category'), team: fd.get('team'), priority: pri.id, status: 'new',
+    requester: String(fd.get('requester')).trim(), dept: fd.get('dept'), assignee: '', location: '',
+    created: now, closed: null, slaDue: now + pri.sla * HOUR,
+    description: String(fd.get('description') || '').trim(),
+    history: [],
+  };
+  tickets.push(t);
+  save();
+  dlg.close();
+  pageSize = Math.max(pageSize, 40);
+  renderAll();
+  toast(`تمت إضافة التذكرة ${t.id}`);
+  const row = document.querySelector(`tr[data-id="${t.id}"]`);
+  if (row) row.scrollIntoView({ block: 'center', behavior: 'smooth' });
+});
+
+/* ---------- Toolbar ---------- */
+let toastTimer;
+function toast(msg) {
+  const el = $('#toast'); el.textContent = msg; el.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+}
+function currentTheme() {
+  const set = document.documentElement.dataset.theme;
+  if (set) return set;
+  return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function applyTheme(theme, persist) {
+  document.documentElement.dataset.theme = theme;
+  $('#themeIcon').setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
+  $('#themeBtn').setAttribute('aria-label', theme === 'dark' ? 'التبديل إلى الوضع الفاتح' : 'التبديل إلى الوضع الداكن');
+  document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#0d0d0d' : '#f6f6f3';
+  if (persist) storage.set(THEME_KEY, theme);
+}
+$('#themeBtn').addEventListener('click', () => applyTheme(currentTheme() === 'dark' ? 'light' : 'dark', true));
+
+$('#resetBtn').addEventListener('click', () => {
+  if (!confirm('سيتم حذف جميع التعديلات وإعادة توليد البيانات التجريبية. هل تريد المتابعة؟')) return;
+  storage.del(STORE_KEY);
+  tickets = generateTickets();
+  save();
+  Object.assign(filters, { q: '', team: '', status: '', priority: '' });
+  syncFilterInputs();
+  pageSize = 40;
+  closePanel();
+  renderAll();
+  toast('تمت إعادة تعيين البيانات');
+});
+
+function syncFilterInputs() {
+  $('#q').value = filters.q; $('#fTeam').value = filters.team;
+  $('#fStatus').value = filters.status; $('#fPriority').value = filters.priority;
+}
+let qTimer;
+$('#q').addEventListener('input', e => { clearTimeout(qTimer); qTimer = setTimeout(() => { filters.q = e.target.value; pageSize = 40; renderTable(); }, 120); });
+$('#fTeam').addEventListener('change', e => { filters.team = e.target.value; pageSize = 40; renderBarChart(); renderTable(); });
+$('#fStatus').addEventListener('change', e => { filters.status = e.target.value; pageSize = 40; renderTable(); });
+$('#fPriority').addEventListener('change', e => { filters.priority = e.target.value; pageSize = 40; renderTable(); });
+$('#clearBtn').addEventListener('click', () => {
+  Object.assign(filters, { q: '', team: '', status: '', priority: '' });
+  syncFilterInputs(); pageSize = 40; renderBarChart(); renderTable();
+});
+$('#moreBtn').addEventListener('click', () => { pageSize += 40; renderTable(); });
+
+/* ---------- Init ---------- */
+fillSelect($('#fTeam'), TEAMS, 'كل الفرق');
+fillSelect($('#fStatus'), [{ id: 'open', name: 'المفتوحة (غير المغلقة)' }, { id: 'breached', name: 'المتجاوزة لاتفاقية الخدمة' }, ...STATUSES], 'كل الحالات');
+fillSelect($('#fPriority'), PRIORITIES, 'كل الأولويات');
+fillSelect($('#pStatus'), STATUSES);
+fillSelect($('#nCategory'), CATEGORIES);
+fillSelect($('#nTeam'), TEAMS);
+fillSelect($('#nPriority'), PRIORITIES.map(p => ({ id: p.id, name: `${p.name} (${p.sla} ساعة)` })));
+fillSelect($('#nDept'), DEPTS.map(d => ({ id: d, name: d })));
+
+const savedTheme = storage.get(THEME_KEY);
+applyTheme(savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : currentTheme(), false);
+$('#todayLabel').textContent = fmtDate(Date.now());
+
+load();
+renderAll();
+
+let rTimer;
+const ro = new ResizeObserver(() => { clearTimeout(rTimer); rTimer = setTimeout(() => { renderBarChart(); renderLineChart(); }, 80); });
+ro.observe($('#barChart')); ro.observe($('#lineChart'));
+// Refresh relative SLA timers every minute
+setInterval(() => { renderKpis(); renderTable(); }, 60e3);
+})();
+</script>
+</body>
+</html>
